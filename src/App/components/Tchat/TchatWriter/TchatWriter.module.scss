@@ -1,0 +1,14 @@
+.TchatWriter {
+    height:100px;
+    width:100%;
+    display: flex;
+}
+.TchatWriter>*{
+    vertical-align: middle;
+}
+.TchatWriter>input{
+    height: 36px;
+    font-size: 32px;
+    flex-grow: 1;
+}
+ 
