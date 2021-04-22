@@ -2,13 +2,21 @@ import {combineReducers, createStore} from 'redux';
 import { REST_ADR } from '../config/config';
 export const initialState = {
     messages: [],
-    tchatUsers: []
+    tchatUsers: [],
+    selectedUserId:-1,
+    connectedUser:null
 }
 export const TCHAT_ACTIONS=Object.freeze({
     ADD_USERS:'ADD_USERS',
     ADD_USER:'ADD_USER',
     ADD_MESSAGES:'ADD_MESSAGES',
-    SEND_MESSAGE:'SEND_MESSAGE'
+    SEND_MESSAGE:'SEND_MESSAGE',
+    CONNECT_USER:'CONNECT_USER',
+    DISCONNECT_USER:'DISCONNECT_USER',
+    /**
+     * use to select a user by clicking on image users list
+     */
+    SELECT_USER:'SELECT_USER'
 });
 const TCHAT_PRIVATE_ACTIONS=Object.freeze({
     INIT:'@@redux/INIT',
@@ -49,6 +57,9 @@ function tchatReducer(state = initialState, action) {
                         store.dispatch({type:TCHAT_ACTIONS.ADD_MESSAGES,values:o})
                     });
             return state;
+        case TCHAT_ACTIONS.DISCONNECT_USER:return {...state,connectedUser:null};
+        case TCHAT_ACTIONS.CONNECT_USER:return {...state,connectedUser:action.value};
+        case TCHAT_ACTIONS.SELECT_USER:return {...state,selectedUserId:action.value};
         case TCHAT_ACTIONS.ADD_USER:return {...state,tchatUsers:[...state.tchatUsers,action.value]};
         case TCHAT_ACTIONS.ADD_USERS:return {...state,tchatUsers:[...state.tchatUsers,...action.values]};
         case TCHAT_ACTIONS.ADD_MESSAGES:
@@ -61,9 +72,9 @@ const store=createStore(tchatReducer);
 // const store=createStore(combineReducers({tchat: tchatReducer,mangeUser:usersReducer});
 // store.getState().tchat.messages
 export default store;
-store.subscribe(()=>{
-    console.log(store.getState());
-});
+// store.subscribe(()=>{
+//     console.log(store.getState());
+// });
 
 // store.dispatch({type:'ADD_USERS',values:[{login:'alex'},{login:'boby'}]});
 // store.dispatch({type:'ADD_USERS',values:[{login:'pascal'},{login:'dominique'}]});

@@ -1,9 +1,11 @@
-.Tchat {}
-.horizontal{
+.Tchat {
+    border: 1px solid black;
+}
+.horizontal {
     display: flex;
     flex-direction: row;
-    width:98vw;
-    height: calc(90vh - 40px);
-    background-color: skyblue;
-    padding:10px 20px;
+    width: 97vw;
+    height: calc(90vh - 50px);
+    // background-color: skyblue;
+    padding: 10px 20px;
 }

@@ -14,7 +14,7 @@ const TchatViewer = (props) => {
       {messages.map((e, i) => <div className="message" key={'message-' + i}>
         {e.dateTime && e.dateTime.split('T')[1].split('.')[0] + ':'}<span style={{ color: e.color }}>{e.text}</span>
         {/*2021-04-23T12:35:00.595*/}
-        {JSON.stringify(e)}
+        {/* {JSON.stringify(e)} */}
       </div>)}
     </div>
   );

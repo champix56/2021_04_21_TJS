@@ -1,0 +1,19 @@
+.Auth {
+    position: fixed;
+    top:0;bottom: 0;left: 0;right: 0;
+    
+    background-color: skyblue;
+}
+.content{
+    border-radius: 8px;
+    background-color: white;
+    left: 30%;
+    right: 30%;
+    top: 40%;
+    position: fixed;
+    text-align: center;
+}
+.content select{
+    height: 64px;
+    font-size: 42px;
+}

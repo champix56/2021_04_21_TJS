@@ -28,7 +28,7 @@ class Tchat extends Component {
           <TchatUsers users={this.state.tchatUsers}></TchatUsers>
         </div>
         <TchatWriter users={this.state.tchatUsers}></TchatWriter>
-        {JSON.stringify(this.state)}
+        {/* {JSON.stringify(this.state)} */}
       </div>
     );
   }

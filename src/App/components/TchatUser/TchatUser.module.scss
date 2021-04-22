@@ -1,1 +1,10 @@
-.TchatUser {}
+.TchatUser {
+    user-select: none;
+}
+.TchatUser * {
+    vertical-align: middle;
+}
+
+.TchatUser:hover {
+    background-color: rgba(128, 128, 128, 0.7);
+}

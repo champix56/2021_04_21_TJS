@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import styles from './TchatUser.module.scss';
 
 const TchatUser = (props) => (
-  <div className={styles.TchatUser} data-testid="TchatUser">
-    <img style={{height:'100px',maxWidth:'80px',size:'auto', display:'inline'}} src={props.user.img} alt={'face de '+props.user.login}/>
+  <div className={styles.TchatUser} data-testid="TchatUser" onClick={()=>props.onuserclicked(props.user.id)}>
+    <img style={{height:'60px',maxWidth:'50px',size:'auto', display:'inline', padding:'10px'}} src={props.user.img} alt={'face de '+props.user.login}/>
     {props.user.login}
   </div>
 );
 
-TchatUser.propTypes = {user:PropTypes.object.isRequired};
+TchatUser.propTypes = {user:PropTypes.object.isRequired,
+  onuserclicked:PropTypes.func.isRequired};
 
-TchatUser.defaultProps = {};
+TchatUser.defaultProps = {onuserclicked:(user)=>{console.log('userclicked',user)}};
 
 export default TchatUser;
