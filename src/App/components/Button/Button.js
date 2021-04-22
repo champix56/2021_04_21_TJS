@@ -7,8 +7,11 @@ import './Button.css';
  * @returns {node} struct of component 
  */
 function Button(props){
-    console.log(props);
-    return <div onClick={()=>{props.onclickbutton('azertyu')}} className="Button" style={{backgroundColor:props.bgColor,...props.style}}>{props.title}</div>
+   // console.log(props);
+    return <div onClick={()=>{
+        console.log(props)
+       props.onclickbutton()
+        }} className="Button" style={{backgroundColor:props.bgColor,...props.style}}>{props.title}</div>
 }
 Button.propTypes={
     title:PropTypes.string.isRequired,

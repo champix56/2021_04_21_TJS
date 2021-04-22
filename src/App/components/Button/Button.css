@@ -6,4 +6,7 @@
     padding:7px;
     border-radius:7px;
     margin:8px;
+    max-height:24px;
+    user-select: none;
+    vertical-align: middle;
 }
