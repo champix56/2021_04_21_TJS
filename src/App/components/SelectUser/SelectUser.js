@@ -5,15 +5,13 @@ import store, { initialState, TCHAT_ACTIONS } from '../../reducers/store';
 
 const SelectUser = (props) => {
   const [users, setusers] = useState(initialState.tchatUsers);
-  const [selectedUserId, setselectedUserId] = useState(-1);
-  useEffect(() => {
+   useEffect(() => {
     setusers(store.getState().tchatUsers);
        store.subscribe(() => {
         setusers(store.getState().tchatUsers);
     })
   }, []);
-  console.log(props, selectedUserId);
-  return (
+   return (
     <select className={style.SelectUser} data-testid="SelectUser"
       value={props.selectedId}
       onChange={(evt) => {
