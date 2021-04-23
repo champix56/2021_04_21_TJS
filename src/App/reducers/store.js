@@ -23,21 +23,27 @@ const TCHAT_PRIVATE_ACTIONS=Object.freeze({
     INIT_PULLING:'INIT_PULLING',
     PULLING:'PULLING'
 });
+/**
+ * 
+ * @param {*} state 
+ * @param {*} action 
+ * @returns 
+ */
 function tchatReducer(state = initialState, action) {
    // console.log(action.type);
     if(action.type.includes('@@redux/INIT')){action.type=TCHAT_PRIVATE_ACTIONS.INIT;}
     switch (action.type) {
         case TCHAT_PRIVATE_ACTIONS.INIT:
-            fetch(`${REST_ADR}/messages`).then(f=>f.json()).then(o=>{
+            fetch(`${REST_ADR}/messages/`).then(f=>f.json()).then(o=>{
                 store.dispatch({type:TCHAT_ACTIONS.ADD_MESSAGES,values:o});
             });
-            fetch(`${REST_ADR}/tchatUsers`).then(f=>f.json()).then(o=>{
+            fetch(`${REST_ADR}/tchatUsers/`).then(f=>f.json()).then(o=>{
                 store.dispatch({type:TCHAT_ACTIONS.ADD_USERS,values:o});
             })
             setInterval(()=>{store.dispatch({type:TCHAT_PRIVATE_ACTIONS.PULLING})},2000);
         return state;
         case TCHAT_ACTIONS.SEND_MESSAGE:
-            fetch(`${REST_ADR}/messages`,{
+            fetch(`${REST_ADR}/messages/`,{
                     method:'POST',
                     body:JSON.stringify(action.value),
                     headers: {
@@ -50,7 +56,7 @@ function tchatReducer(state = initialState, action) {
                 let last=0;
                 //console.log('pulling')
                 state.messages.forEach((e)=>{last=e.id>last?e.id:last;})
-                fetch(`${REST_ADR}/messages?id_gte=${last+1}`)
+                fetch(`${REST_ADR}/messages/?id_gte=${last+1}`)
                     .then(f=>f.json())
                     .then(o=>{
                         if (o.length <= 0) return;

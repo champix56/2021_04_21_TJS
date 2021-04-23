@@ -30,7 +30,9 @@ const TchatWriter = (props) => {
       <Button title="Envoyer" onclickbutton={() => {
         const toSendMessage = { ...message, dateTime: new Date().toISOString() }
         console.log(toSendMessage);
+
         store.dispatch({ type: TCHAT_ACTIONS.SEND_MESSAGE, value: toSendMessage });
+        setmessage(initialState)
       }} />
     </div>
   );
